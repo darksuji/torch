@@ -103,10 +103,11 @@ The JSON has one top-level property per system, keyed by the Foundry id of the s
     * If not specified, it defaults to `false`. 
     * If your system doesn't count inventory, make sure all of your light sources either don't specify this field or set it to `false`.
     * If you find "counting your candles" a complete distraction from your game, you can turn this feature off using the "GM Uses Inventory" and "Player Uses Inventory" settings.
-  * The `states` specifies how many states the light source toggles through. This allows for sources like hooded lanterns to toggle "high - low - off" if desired. It can be omitted and the number of states will be one more than the number of objects you supply to the `light` array. 
+  * The `states` specifies how many states the light source toggles through. This allows for sources like hooded lanterns to toggle "high - low - off" if desired. It can be omitted and the number of states will be one more than the number of objects you supply to the `light` array.  Note that any value other than `3` will be interpreted as `2`.
   * The `light` value is an array of objects that specify the light properties for each "on" light state. It has no default.
     * Values for the "off" state are taken from the settings for the actor's prototype token.
     * If you supply a single object rather than an array of objects, the module will treat it as an array of one item,  (a light source with a single "on" state, the most common condition), and `states` will default to 2.
+    * If the array has more than two elements, the source will be considered to have only two states; any elements after the first will be ignored.
   * In `animation`, the `type` field can currently take one of the following values. Aside from the first two, they match the list in the GUI in pretty obvious ways.
     * `flame` (for `Torch` animation)
     * `torch` (for `Flickering Light` animation)
